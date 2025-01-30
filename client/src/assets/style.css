@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.global--container {
+  @apply h-[100svh] w-[100svw] px-8 mx-auto max-w-screen-xl pt-20;
+  background-color: theme("colors.background");
+  color: theme("colors.secondary");
+}
+
+.global--screen--loader--container {
+  @apply h-[100svh] w-[100svw] flex justify-center items-center pt-10;
+  background-color: theme("colors.accent");
+}
+
+.global--screen--loader {
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.global--loader {
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.global--header {
+  @apply flex justify-between px-8 py-4 fixed w-full;
+  background-color: theme("colors.accent");
+}
+
+.global--header--link {
+  @apply font-bold;
+  color: theme("colors.primary");
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background-color: theme("colors.background");
+  color: theme("colors.secondary");
+}
+
+a {
+  color: theme("colors.accent");
+}
+
+button {
+  background-color: theme("colors.primary");
+  color: theme("colors.secondary");
+}
+
+h1 {
+  @apply font-bold text-xl uppercase;
+  color: theme("colors.accent");
+  background-color: theme("colors.primary");
+}
+
+label {
+  @apply text-lg;
+  color: theme("colors.accent");
+}
+
+input {
+  @apply mb-3 px-2 py-2 w-full rounded;
+  color: theme("colors.accent");
+  font-weight: normal;
+  border: 3px solid transparent;
+  outline: none;
+}
+
+input:focus,
+input:hover {
+  @apply transition-all;
+  border-color: theme("colors.accent");
+}
+
+button {
+  @apply px-5 py-2 rounded text-lg font-semibold;
+  background-color: theme("colors.accent");
+  color: theme("colors.primary");
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  @apply opacity-90; /* Apply opacity change */
+  background-color: theme("colors.primary");
+  color: theme("colors.accent");
+}

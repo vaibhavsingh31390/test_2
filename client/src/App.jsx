@@ -1,13 +1,18 @@
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { authRoutes } from "./app/routes/authRoutes";
+import { poolRoutes } from "./app/routes/poolRoutes";
+import NotFound from "./app/pages/status_codes/NotFound";
+import "./assets/style.css";
 function App() {
-
-  return (
-    <>
-    <h1 className="bg-slate-700 p-4 text-blue-800">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, ut.
-    </h1>
-    </>
-  )
+  const routes = [
+    ...authRoutes,
+    ...poolRoutes,
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+  ];
+  return <RouterProvider router={createBrowserRouter(routes)} />;
 }
 
-export default App
+export default App;
