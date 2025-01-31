@@ -6,11 +6,18 @@
   @apply h-[100svh] w-[100svw] px-8 mx-auto max-w-screen-xl pt-20;
   background-color: theme("colors.background");
   color: theme("colors.secondary");
+
 }
 
 .global--screen--loader--container {
-  @apply h-[100svh] w-[100svw] flex justify-center items-center pt-10;
+  @apply h-[100svh] w-[100svw] flex justify-center items-center pt-10 fixed;
   background-color: theme("colors.accent");
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.global--screen--loader--container.fade-out {
+  opacity: 0;
 }
 
 .global--screen--loader {
@@ -43,6 +50,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -75,7 +83,7 @@ label {
 
 input {
   @apply mb-3 px-2 py-2 w-full rounded;
-  color: theme("colors.accent");
+  color: theme("colors.primary");
   font-weight: normal;
   border: 3px solid transparent;
   outline: none;
@@ -96,7 +104,26 @@ button {
 
 button:hover,
 button:focus {
-  @apply opacity-90; /* Apply opacity change */
+  @apply opacity-90;
+  /* Apply opacity change */
   background-color: theme("colors.primary");
   color: theme("colors.accent");
+}
+
+.card {
+  @apply p-4 flex flex-col gap-3 rounded;
+  background-color: theme("colors.white");
+  color: theme("colors.primary");
+}
+
+.card h2 {
+  @apply text-2xl font-bold
+}
+
+.card p {
+  @apply text-lg
+}
+
+.options--add {
+  @apply flex justify-start items-end gap-3 w-[100%];
 }

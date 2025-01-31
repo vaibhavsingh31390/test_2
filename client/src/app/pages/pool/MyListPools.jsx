@@ -1,6 +1,6 @@
 import { ButtonLoader } from '../../components/ui/FormElements';
 
-const ListPools = () => {
+const MyListPools = () => {
   return (
     <>
       <div className="card">
@@ -26,4 +26,4 @@ const ListPools = () => {
   );
 };
 
-export default ListPools;
+export default MyListPools;

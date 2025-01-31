@@ -1,18 +1,23 @@
 /* eslint-disable react/prop-types */
-import { useContext, Suspense } from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import { authStore } from "../../store/stores";
-import ScreenLoader from "./../ui/ScreenLoader";
-import Header from "../ui/Header";
+import { Suspense, useState } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import ScreenLoader from './../ui/ScreenLoader';
+import Header from '../ui/Header';
 
 export const LazyWithAuth = ({ Component, isPublic = false }) => {
-  const { isAuth } = useContext(authStore);
+  const { isAuth } = useSelector((state) => state.auth);
   const location = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const publicRoutes = ["/register", "/"];
+  const publicRoutes = ['/register', '/'];
+
+  const handleFadeOutComplete = () => {
+    setIsLoading(false);
+  };
 
   if (isAuth && publicRoutes.includes(location.pathname)) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/pools" replace />;
   }
 
   if (!isAuth && !isPublic) {
@@ -22,11 +27,12 @@ export const LazyWithAuth = ({ Component, isPublic = false }) => {
   return (
     <>
       <Header />
-      <div className="global--container">
-        <Suspense fallback={<ScreenLoader />}>
+      {isLoading && <ScreenLoader onFadeOutComplete={handleFadeOutComplete} />}
+      <Suspense fallback={null}>
+        <div className="global--container">
           <Component />
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </>
   );
 };

@@ -1,15 +1,20 @@
 /* eslint-disable react/prop-types */
-function Loader({ width, height, borderColor, ...props }) {
-  return (
-    <div
-      className="global--loader"
-      style={{
-        width: width || "16px",
-        height: height || "16px",
-        border: `5px solid ${borderColor || "theme('colors.primary')"}`,
-      }}
-    ></div>
-  );
+
+function Loader({
+  width = '21px',
+  height = '21px',
+  borderColor = '#fff',
+  borderWidth = '3',
+  ...props
+}) {
+  const loaderStyle = {
+    width,
+    height,
+    border: `${borderWidth}px solid ${borderColor}`,
+    borderTop: `${borderWidth}px solid transparent`,
+  };
+
+  return <div className="global--loader" style={loaderStyle} {...props}></div>;
 }
 
 export default Loader;

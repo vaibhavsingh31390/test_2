@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import Loader from "./Loader";
+import React from 'react';
+import Loader from './Loader';
 
 export const Form = React.forwardRef(
   ({ children, className, onSubmitHandler, ...props }, ref) => {
@@ -8,7 +8,7 @@ export const Form = React.forwardRef(
       <form
         ref={ref}
         onSubmit={onSubmitHandler}
-        className={`${className ? className : "p-2"}`}
+        className={`${className ? className : 'p-2'}`}
         {...props}
       >
         {children}
@@ -17,14 +17,14 @@ export const Form = React.forwardRef(
   }
 );
 
-Form.displayName = "Form";
+Form.displayName = 'Form';
 
 export const Input = React.forwardRef(
   ({ className, type, disabled, ...props }, ref) => {
     return (
       <div>
         <label className="" htmlFor={props.id}>
-          {props.label || ""}
+          {props.label || ''}
         </label>
         <div className="">
           <input
@@ -40,7 +40,7 @@ export const Input = React.forwardRef(
   }
 );
 
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export const ButtonLoader = React.forwardRef(
   ({ className, type, disabled = false, ...props }, ref) => {
@@ -48,16 +48,25 @@ export const ButtonLoader = React.forwardRef(
       <>
         <button
           ref={ref}
-          className={`${className}`}
+          className={`flex justify-center items-center gap-3 ${className}`}
           type={`${type}`}
           disabled={disabled}
         >
           {props.value}
+          {props.loader ? (
+            <Loader
+              width={props.loaderWidth}
+              height={props.loaderHeight}
+              borderColor={props.loaderColor}
+              borderWidth={props.loaderBorderWidth}
+            />
+          ) : (
+            ''
+          )}
         </button>
-        {props.loader ? <Loader /> : ""}
       </>
     );
   }
 );
 
-ButtonLoader.displayName = "ButtonLoader";
+ButtonLoader.displayName = 'ButtonLoader';
