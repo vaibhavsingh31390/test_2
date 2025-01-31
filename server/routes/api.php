@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+require_once base_path('routes/Auth/AuthRoutesV1.php');
+require_once base_path('routes/Pools/PoolsRoutesV1.php');

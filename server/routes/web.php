@@ -1,7 +1,8 @@
 <?php
 
+use App\Utils\ResponseClass;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return (new ResponseClass('Application is running.', 200))->sendJsonResponse();
 });
