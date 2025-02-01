@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.global--container {
+  @apply container mx-auto px-2 sm:px-4 lg:px-6;
+  background-color: theme("colors.background");
+  color: theme("colors.secondary");
+}
+
+.global--row {
+  @apply flex justify-center gap-5 px-2 sm:px-2 lg:px-2;
+}
+
+.global--screen--loader--container {
+  @apply h-[100svh] w-[100svw] flex justify-center items-center fixed top-0 left-0 z-20;
+  background-color: theme("colors.accent");
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.global--screen--loader--container.fade-out {
+  opacity: 0;
+}
+
+.global--screen--loader {
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.global--loader {
+  @apply z-10;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.global--header {
+  @apply fixed w-full top-0 left-0;
+  background-color: theme("colors.accent");
+}
+
+.global--header--link {
+  @apply font-bold;
+  color: theme("colors.primary");
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background-color: theme("colors.background");
+  color: theme("colors.secondary");
+}
+
+a {
+  color: theme("colors.accent");
+}
+
+button {
+  background-color: theme("colors.primary");
+  color: theme("colors.secondary");
+}
+
+h1 {
+  @apply font-bold text-xl uppercase;
+  color: theme("colors.accent");
+  background-color: theme("colors.primary");
+}
+
+label {
+  @apply text-lg;
+  color: theme("colors.accent");
+}
+
+input,
+textarea {
+  @apply mb-3 px-2 py-2 w-full rounded;
+  color: theme("colors.primary");
+  font-weight: normal;
+  border: 3px solid transparent;
+  outline: none;
+}
+
+input:focus,
+input:hover,
+textarea:focus,
+textarea:hover {
+  @apply transition-all;
+  border-color: theme("colors.accent");
+}
+
+button {
+  @apply px-5 py-2 rounded text-lg font-semibold;
+  background-color: theme("colors.accent");
+  color: theme("colors.primary");
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  @apply opacity-90;
+  /* Apply opacity change */
+  background-color: theme("colors.primary");
+  color: theme("colors.accent");
+}
+
+.card {
+  @apply p-4 flex flex-col gap-3 rounded;
+  background-color: theme("colors.white");
+  color: theme("colors.primary");
+}
+
+.card h2 {
+  @apply text-2xl font-bold
+}
+
+.card p {
+  @apply text-lg
+}
+
+.options--add {
+  @apply flex justify-start items-end gap-3 w-[100%];
+}
+
+.header--button {
+  @apply px-3 py-2 text-base;
+  background-color: theme("colors.primary");
+  color: theme("colors.accent");
+}
+
+.header--button:hover,
+.header--button:focus {
+  @apply opacity-90;
+  background-color: theme("colors.primary");
+  color: theme("colors.white");
+}
