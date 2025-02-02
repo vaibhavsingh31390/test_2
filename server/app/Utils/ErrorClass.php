@@ -3,6 +3,7 @@
 namespace App\Utils;
 
 use Exception;
+use Illuminate\Support\Facades\App;
 
 class ErrorClass extends Exception
 {
@@ -29,6 +30,9 @@ class ErrorClass extends Exception
         'data' => $this->getData(),
         'error' => true,
       ];
+    if (!App::environment('live')) {
+      $response['trace'] = $this->getTrace();
+    }
     return response()->json($response, $this->getCode());
   }
 }

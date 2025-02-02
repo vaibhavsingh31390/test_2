@@ -2,7 +2,6 @@
 
 use App\Enum\RoutesConstants;
 use App\Http\Controllers\Pools\v1\PoolsController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1/pool')->middleware('auth')->group(function () {

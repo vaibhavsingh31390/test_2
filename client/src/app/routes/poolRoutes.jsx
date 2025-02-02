@@ -1,26 +1,25 @@
-import React from 'react';
-import { LazyWithAuth } from '../components/hoc/WithAuth';
+import React, { lazy } from "react";
 
-const CreatePool = React.lazy(() => import('../pages/pool/CreatePool'));
-const UpdatePool = React.lazy(() => import('../pages/pool/UpdatePool'));
-const ListPools = React.lazy(() => import('../pages/pool/ListPools'));
-const MyListPools = React.lazy(() => import('../pages/pool/MyListPools'));
+const CreatePool = lazy(() => import("../components/pages/Pool/CreatePool"));
+const UpdatePool = lazy(() => import("../components/pages/Pool/UpdatePool"));
+const ListPools = lazy(() => import("../components/pages/Pool/ListPools"));
+const MyListPools = lazy(() => import("../components/pages/Pool/MyListPools"));
 
 export const poolRoutes = [
   {
-    path: '/create-pool',
-    element: <LazyWithAuth Component={CreatePool} />,
+    path: "create-pool",
+    element: <CreatePool />,
   },
   {
-    path: '/update-pool',
-    element: <LazyWithAuth Component={UpdatePool} />,
+    path: "update-pool",
+    element: <UpdatePool />,
   },
   {
-    path: '/pools',
-    element: <LazyWithAuth Component={ListPools} />,
+    path: "pools",
+    element: <ListPools />,
   },
   {
-    path: '/my-pools',
-    element: <LazyWithAuth Component={MyListPools} />,
+    path: "my-pools",
+    element: <MyListPools />,
   },
 ];

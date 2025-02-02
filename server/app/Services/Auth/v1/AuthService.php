@@ -52,6 +52,14 @@ class AuthService
   public function login(): ResponseClass|ErrorClass
   {
     try {
+      $validator = Validator::make($this->request->all(), [
+        'email' => 'required|string|email',
+        'password' => 'required|string|min:6',
+      ]);
+
+      if ($validator->fails()) {
+        return new ErrorClass($validator->errors()->first(), 400, $validator->errors());
+      }
       $credentials = $this->request->only('email', 'password');
       if (!$token = $this->jwtAuth::attempt($credentials)) {
         return  new ErrorClass('Please check your credentials.', 500);
@@ -63,7 +71,7 @@ class AuthService
     }
   }
 
-  public function getCurrentUser(): ResponseClass
+  public function getCurrentUser(): ResponseClass|ErrorClass
   {
     try {
       $user = $this->jwtAuth::parseToken()->authenticate();
@@ -73,7 +81,7 @@ class AuthService
     }
   }
 
-  public function logout(): ResponseClass
+  public function logout(): ResponseClass|ErrorClass
   {
     try {
       $this->jwtAuth::invalidate($this->jwtAuth::getToken());

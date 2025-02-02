@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Pools\v1;
 
 use App\Http\Controllers\Controller;
 use App\Services\Pools\v1\PoolService;
-use Illuminate\Http\Request;
 
 class PoolsController extends Controller
 {
@@ -21,7 +20,7 @@ class PoolsController extends Controller
     return $response->sendJsonResponse();
   }
 
-  public function updatePool(Request $request, $poolId)
+  public function updatePool($poolId)
   {
     $response = $this->poolService->updatePool($poolId);
     return $response->sendJsonResponse();
