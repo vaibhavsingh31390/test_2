@@ -1,32 +1,14 @@
-/* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import "./Loader.css";
 
 function ScreenLoader({
-  width = '45px',
-  height = '45px',
-  borderColor = '#fff',
-  borderWidth = '3',
+  width = "45px",
+  height = "45px",
+  borderColor = "var(--color-text)",
+  borderWidth = "5",
   onFadeOutComplete,
   ...props
 }) {
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    const fadeOutTimeout = setTimeout(() => {
-      setFadeOut(true);
-    }, 500);
-    return () => clearTimeout(fadeOutTimeout);
-  }, []);
-
-  useEffect(() => {
-    if (fadeOut) {
-      const unmountTimeout = setTimeout(() => {
-        onFadeOutComplete?.();
-      }, 500);
-      return () => clearTimeout(unmountTimeout);
-    }
-  }, [fadeOut, onFadeOutComplete]);
-
   const loaderStyle = {
     width,
     height,
@@ -35,17 +17,16 @@ function ScreenLoader({
   };
 
   return (
-    <div
-      className={`global--screen--loader--container ${
-        fadeOut ? 'fade-out' : ''
-      }`}
+    <motion.div
+      className="screen-loader-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      onAnimationComplete={onFadeOutComplete}
     >
-      <div
-        className="global--screen--loader"
-        style={loaderStyle}
-        {...props}
-      ></div>
-    </div>
+      <motion.div className="screen-loader" style={loaderStyle} {...props} />
+    </motion.div>
   );
 }
 

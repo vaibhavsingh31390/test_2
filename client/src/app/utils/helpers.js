@@ -4,8 +4,8 @@ export const ACTIONS = {
   SET_THEME_MODE: "SET_THEME_MODE",
 };
 
-export const routes_resolve = {
-  host: `${import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/"}${
+export const routesHelper = {
+  host: `${import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api/"}${
     import.meta.env.VITE_API_VERSION || "v1/"
   }`,
   getHost() {
@@ -28,6 +28,7 @@ export const routes_resolve = {
     listPool: "pool/get",
     myPools: "pool/my-pool",
     vote: "pool/vote",
+    config: "config/get-config",
   },
   getEndpoint(key) {
     if (Object.prototype.hasOwnProperty.call(this.routes, key)) {

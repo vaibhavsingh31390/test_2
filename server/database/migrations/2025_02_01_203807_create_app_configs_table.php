@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('app_configs', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->string('value');
+            $table->json('value');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,0 +1,19 @@
+/* theme.css */
+:root {
+  --color-background: #ffffff; /* Light mode background */
+  --color-text: #000000; /* Light mode text */
+}
+
+[data-theme="dark"] {
+  --color-background: #000000; /* Dark mode background */
+  --color-text: #ffffff; /* Dark mode text */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

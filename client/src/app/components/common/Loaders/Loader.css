@@ -1,0 +1,8 @@
+.screen-loader-container {
+  @apply bg-[var(--color-background)] min-h-[100svh] min-w-[100svw] fixed top-0 left-0 flex justify-center items-center;
+}
+
+.screen-loader {
+  @apply rounded-full;
+  animation: spin 1s linear infinite;
+}

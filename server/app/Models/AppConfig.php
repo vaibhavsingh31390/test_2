@@ -15,6 +15,13 @@ class AppConfig extends Model
         'value',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'value' => 'array',
+        ];
+    }
+
     const CACHE_KEY = 'app_config';
     const CACHE_TTL = 3600;
 
@@ -31,7 +38,7 @@ class AppConfig extends Model
         });
     }
 
-    protected function clearConfigCache()
+    protected static function clearConfigCache()
     {
         Cache::forget(self::CACHE_KEY);
     }

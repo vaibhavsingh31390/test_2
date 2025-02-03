@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
 function Loader({
-  width = '21px',
-  height = '21px',
-  borderColor = '#fff',
-  borderWidth = '3',
+  width = "21px",
+  height = "21px",
+  borderColor = "var(--loader-border-color)", // Use CSS variable
+  borderWidth = "3",
   ...props
 }) {
   const loaderStyle = {

@@ -1,15 +1,19 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, useLocation } from "react-router-dom";
 import App from "../App";
 import NotFound from "../components/pages/HTTP/NotFound";
 import { poolRoutes } from "./poolRoutes";
 import { authRoutes } from "./authRoutes";
 import ProtectedRoute from "../components/common/HOC/ProtectedRoute";
 
+const NotFoundWithLocation = () => {
+  const location = useLocation();
+  return <NotFound location={location.pathname} />;
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <NotFound />,
     children: [
       ...poolRoutes.map((route) => ({
         path: route.path,
@@ -21,7 +25,7 @@ const router = createBrowserRouter([
       })),
       {
         path: "*",
-        element: <NotFound />,
+        element: <NotFoundWithLocation />,
       },
     ],
   },

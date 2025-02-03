@@ -1,0 +1,7 @@
+.error-page {
+  @apply bg-[var(--color-background)] min-h-[100svh] min-w-[100svw] fixed top-0 left-0 flex justify-center items-center;
+}
+
+.error-page-h1 {
+  @apply text-3xl uppercase bg-[var(--color-text)] text-[--color-background] p-4 rounded shadow;
+}

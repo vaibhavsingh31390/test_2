@@ -50,10 +50,10 @@ class ConfigService
   {
     try {
       $configs = Cache::get(AppConfig::CACHE_KEY);
-      if (!empty($configs)) {
+      if (empty($configs)) {
         $configs = AppConfig::all();
+        Cache::put(AppConfig::CACHE_KEY, $configs, AppConfig::CACHE_TTL);
       }
-      Cache::put(AppConfig::CACHE_KEY, $configs, AppConfig::CACHE_TTL);
       return new ResponseClass('Configs fetched successfully.', 200, $configs);
     } catch (\Exception $e) {
       return new ErrorClass($e->getMessage(), 500);

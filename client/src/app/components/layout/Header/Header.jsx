@@ -1,9 +1,14 @@
-import { routes_resolve } from "../../../utils/helpers";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
-  console.log(routes_resolve.links);
+  const { loading, error, appConfig, currentPath } = useSelector(
+    (state) => state.app
+  );
 
-  return <></>;
+  console.log(appConfig, currentPath());
+
+  return <div>Header</div>;
 }
 
 export default Header;
